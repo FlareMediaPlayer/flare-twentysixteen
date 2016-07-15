@@ -51,6 +51,14 @@ body, html{
     border-color:darkslategrey;
 }
 
+#main-header a{
+    color : black;
+}
+
+.current-menu-item{
+    background-color: darkslategrey;
+}
+
 .front-page-splash{
     text-align: center;
     padding: 20px 0;
@@ -71,4 +79,13 @@ body, html{
 .entry-header h1{
     font-weight: 900;
     color: #E8621F;
+}
+
+.featurette{
+    padding : 20px 0;
+    text-align:center;
+}
+
+.featurette h2{
+    font-size: 50px;
 }
