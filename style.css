@@ -1,10 +1,74 @@
 /*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Jul 14, 2016, 12:45:47 PM
-    Author     : Brian Parra
+Theme Name: Flare Twenty Sixteen
+Theme URI: flaremediaplayer.com
+Description: Flare Media Player 2k16
+Author: Flare Media Player
+Version: 1
 */
 
+body, html{
+    margin : 0;
+    padding : 0;
+    height : 100%
+}
+
+.wrap{
+    display: table;
+    width : 100%;
+    height : 100%;
+    margin : 0;
+    padding : 0;
+    content : '';
+}
+
+.body-content{
+    display: table-row;
+}
+
+.body-inner{
+    
+}
+
+#main-footer{
+    display: table-row;
+    
+    height: 1px; 
+    
+}
+
+.footer-wrap{
+    border-width: 1px 0 0 0;
+    border-style: solid;
+    border-color:"rgba(255,255,255,0.3)";
+    padding: 20px 0;
+}
+
+#main-header{
+
+    background-color: #E8621F;
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    border-color:darkslategrey;
+}
+
+.front-page-splash{
+    text-align: center;
+    padding: 20px 0;
+    font-weight: 900;
+}
+
+.front-page-splash h1{
+    font-weight: 900;
+    color: #E8621F;
+}
+
+.entry-header{
+    background-color:darkslategrey;
+    padding:30px 0;
+    margin: 0 0 40px 0;
+}
+
+.entry-header h1{
+    font-weight: 900;
+    color: #E8621F;
+}
