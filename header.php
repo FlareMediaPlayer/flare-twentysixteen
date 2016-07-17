@@ -13,7 +13,7 @@
 
         <div class="wrap">
             <div class ="body-content">
-                <header id="main-header">
+                <header class="main-header">
                     <nav role="navigation">
                         <div class="container">
                             <!-- Brand and toggle get grouped for better mobile display -->

@@ -6,7 +6,12 @@
                 <div class="footer-wrap">
                     <div class="container">
                         <div class="col-md-3 col-xs-6">
-                            asd
+                            
+                            <ul class="list">
+                                <li ><a href="www.github.com/flaremediaplayer">Github</a></li>
+                                <li><a href="www.github.com/flaremediaplayer">Twitter</a></li>
+                                <li><a href="www.github.com/flaremediaplayer">NPM</a></li>
+                            </ul>
                         </div>
 
                         <div class="col-md-3 col-xs-6">

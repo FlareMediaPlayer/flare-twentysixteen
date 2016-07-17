@@ -5,30 +5,23 @@
         <h1>Flare Media Player</h1>
         <p>Multi Media Streaming Framework</p>
 
-        <a class="jumbotron-callout" href="https://github.com/FlareMediaPlayer">
-            <p>On Github!</p>
-        </a>
+        <a href="www.github.com/flaremediaplayer" class="btn btn-default btn-lg active" role="button">On Github</a>
+
     </div>
 </section>
 
 <div class="container">
-    <?php
-// Start the loop.
-    while (have_posts()) : the_post();
-        ?>
-        <section>
-            <?php the_content(); ?>
-        </section>
-        <?php
-// End the loop.
-    endwhile;
-    ?>
     <div class="row featurette">
         <h2>Multi-Media Streaming for all purposes</h2>
         <div class="col-xs-12 col-sm-6">
             <p class="lead">
                 Flare Media Player consists of front end and back end components, built to accomodate your streaming needs.
             </p>
+            
+            <p class="lead">
+                The goal is to provide a unifying media streaming process that allows for content providers to efficiently upload, encode, and stream content depending on their system architechture.
+            </p>
+            
         </div>
 
         <div class="col-xs-12 col-sm-6">
@@ -51,15 +44,16 @@
     <div class="row featurette">
         <h2>Components</h2>
         <div class="col-xs-12 col-sm-6">
-            <p class="lead">
-                Check out the library of front-end and back-end components.
-            </p>
+            <img src="http://localhost:8888/FlareWordpress/wp-content/uploads/2016/07/Flare-example-player.png"/>
         </div>
 
         <div class="col-xs-12 col-sm-6">
-            <i class="fa fa-cogs" aria-hidden="true"></i>
             <p class="lead">
-                Try out some fully compiled Flare Media Players.
+                Depending on your application's configuration, you may need different components to deliver content.
+            </p>
+            
+            <p class="lead">
+                Front and back-end components are separated into packages which can be joined with your custom logic. 
             </p>
         </div>
 
