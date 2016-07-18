@@ -19,7 +19,7 @@ add_action( 'after_setup_theme', 'flare_twentysixteen_setup' );
 
 
 function flare_twentysixteen_scripts() {
-    
+    wp_enqueue_style( 'fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' );
     wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/css/font-awesome.min.css' );
     wp_enqueue_style( 'bootstrap-css', get_template_directory_uri() . '/css/bootstrap.min.css' );
     wp_enqueue_style( 'flare-twentysixteen-style', get_stylesheet_uri() );

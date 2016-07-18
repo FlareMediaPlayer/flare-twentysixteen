@@ -55,6 +55,11 @@
             <p class="lead">
                 Front and back-end components are separated into packages which can be joined with your custom logic. 
             </p>
+            
+            <div class="btn-outline">
+      <a href="#" class="btn btn-flare">View Components</a>
+
+    </div>
         </div>
 
     </div>

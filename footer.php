@@ -6,7 +6,7 @@
                 <div class="footer-wrap">
                     <div class="container">
                         <div class="col-md-3 col-xs-6">
-                            
+                            <h4>Social</h4>
                             <ul class="list">
                                 <li ><a href="www.github.com/flaremediaplayer">Github</a></li>
                                 <li><a href="www.github.com/flaremediaplayer">Twitter</a></li>
@@ -15,15 +15,32 @@
                         </div>
 
                         <div class="col-md-3 col-xs-6">
-                            asd
+                            <h4>Flare Team</h4>
+                            <ul class="list">
+                                <li><a href="#">About</a></li>
+                                <li ><a href="#">Team</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
                         </div>
 
                         <div class="col-md-3 col-xs-6">
-                            asd
+                            <h4>Community</h4>
+                            <ul class="list">
+                                <li ><a href="#">Feature Request</a></li>
+                                <li><a href="#">Forum</a></li>
+                                <li><a href="#">Blog</a></li>
+                            </ul>
                         </div>
 
                         <div class="col-md-3 col-xs-6">
-                            asd
+                            <h4>Info</h4>
+                            <ul class="list">
+                                <li >Graphics: <a href="#">Rob Walden</a></li>
+                                <li><a href="#">Licensing</a></li>
+                                <li><i class="fa fa-copyright" aria-hidden="true"></i> 2016 Flare Media Player</li>
+                            </ul>
+                            
+                         
                         </div>
 
                     </div>
