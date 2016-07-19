@@ -79,33 +79,69 @@ body, html{
 
 .main-header a{
     color : black;
+    
 }
 
+.dropdown-menu > li > a:hover {
+    background-color: #F2A649;
+    background-image: none;
+}
+
+.navbar-collapse collapse .in,.navbar-collapse collapse .collapsing{
+    background-color:#f6f6f6;
+}
+
+.navbar-nav>li>.dropdown-menu {
+    margin-top: 1px;
+    background-color: #f6f6f6;
+}
 .current-menu-item , .current-menu-parent {
     background-color: #2a2a2a;
     font-weight: bold;
+    color: #F27127 !important;
 }
 
 .current-menu-item a , .current-menu-parent a{
     color: #F27127;
 }
 
-.dropdown-toggle .current-menu-item ,.dropdown-toggle  .current-menu-parent {
-    background-color: #fefefe;
-    font-weight: bold;
-}
-
-.dropdown-toggle .current-menu-item a , .dropdown-toggle .current-menu-parent a{
+.current-menu-parent.open .dropdown-toggle{
     color: #F27127;
 }
 
-.nav > li > a:focus, 
+.dropdown-toggle .current-menu-item  {
+    background-color: #fefefe !important;
+    font-weight: bold;
+}
+
+.dropdown-toggle .current-menu-item a {
+    color: #F27127 !important;
+    background-color: #fefefe !important;
+    font-weight: bold !important;
+}
+
+ 
 .nav > li > a:hover 
 {
     background-color: #F2A649;
     color: black;
 }
 
+.nav > li > .dropdown a:focus{
+    background-color: #F2A649;
+    color: black;
+}
+
+.dropdown-menu>.active>a{
+    color:#333;
+    font-weight: bold;
+    background-color: #f6f6f6;
+}
+
+.dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover {
+    background-color: #F2A649;
+    color: black;
+}
 
 .nav .open>a, .nav .open>a:focus{
     background-color: transparent;
