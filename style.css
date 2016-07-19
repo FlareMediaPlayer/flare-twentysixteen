@@ -7,6 +7,7 @@ Version: 1
 */
 
 body, html{
+    
     margin : 0;
     padding : 0;
     height : 100%;
@@ -30,7 +31,23 @@ body, html{
     
 }
 
+.hljs{
+    text-align: left;
+}
 
+pre.code{
+    display: block;
+    font-family: monospace;
+    padding:0;
+    margin:0;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+    border:none;
+    background-color: transparent;
+}
 /**********************************
 * FOOTER
 **********************************/
@@ -206,6 +223,7 @@ body, html{
     
 }
 
+
 .entry-header{
     background-color: #2a2a2a;
     padding:30px 0;
@@ -229,9 +247,23 @@ body, html{
     text-align:center;
 }
 
+@media screen and (max-width: 768px) {
+    .featurette h2{
+        font-size:36px;
+    }
+}
+
+.featurette{
+    text-align: center;
+}
+
 .featurette img{
     width : 100%;
-    
+    padding-bottom: 20px;
+}
+
+.featurette p{
+    text-align: left;
 }
 
 .list{
@@ -253,6 +285,7 @@ body, html{
 }
 
 .btn-flare{
+    transition: all 0.3s ease;
     background: #F27127;
     border-color: #F27127;
     color: #2a2a2a;
@@ -266,4 +299,39 @@ body, html{
     background: #2a2a2a;
     border-color: #2a2a2a;
     color: #F27127;
+}
+
+.btn-flare-light{
+    transition: all 0.3s ease;
+    background: white;
+    border-color: white;
+    color: #2a2a2a;
+    font-weight: bold;
+    font-size: 36px;
+    padding: 10px 32px;
+    white-space: normal;
+}
+
+.btn-flare-light:hover{
+    background: #2a2a2a;
+    border-color: white;
+    color: white;
+}
+
+@media only screen and (max-width : 992px) {
+    
+    .btn-flare, .btn-flare-light {
+        font-size:26px;
+    }
+    
+    
+}
+
+/**********************************
+* BUTTONS
+**********************************/
+
+.lg-icon{
+    font-size: 70px;
+    display: block;
 }

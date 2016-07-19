@@ -5,7 +5,7 @@
         <h1>Flare Media Player</h1>
         <p>Multi Media Streaming Framework</p>
 
-        <a href="www.github.com/flaremediaplayer" class="btn btn-default btn-lg active" role="button">On Github</a>
+        <a href="www.github.com/flaremediaplayer" class="btn btn-flare-light" role="button">On Github</a>
 
     </div>
 </section>
@@ -25,7 +25,13 @@
         </div>
 
         <div class="col-xs-12 col-sm-6">
-            <img src="http://localhost:8888/FlareWordpress/wp-content/uploads/2016/07/Flare-digram1.png"/>
+            <i class="fa fa-rocket lg-icon" aria-hidden="true"></i>
+            <div class="btn-outline">
+                <a href="#" class="btn btn-flare">Getting Started</a>
+            </div>
+            
+            
+            
         </div>
     </div>
     <hr class="featurette-divider">
@@ -35,9 +41,22 @@
 
         <div class="col-xs-12 col-sm-6">
             <p class="lead">
-                Use client side pure javascript to decode media. Don't rely on native browser codecs.
+                Traditionally, media is decoded using browser implemented codecs. Installing support for new codecs or formats required installation of third party plugins like Adobe Flash, or Microsoft Sliverlight.
             </p>
+            
+            <p class="lead">
+                By implementing the codecs on the client side in pure Javascript, end viewers do not need to download extra software to play a codec that is not supported by their browser.
+            </p>
+            
+            <p class="lead">
+                Further simplification can be done by converting any input file, to a single codec. For example, you application can convert audio files and prepare to stream them in AAC. 
+            </p>
+            
         </div>
+        <div class="col-xs-12 col-sm-6">
+            <img src="http://localhost:8888/FlareWordpress/wp-content/uploads/2016/07/Flare-digram1.png"/>
+        </div>
+        
     </div>
     <hr class="featurette-divider">
 
@@ -55,11 +74,10 @@
             <p class="lead">
                 Front and back-end components are separated into packages which can be joined with your custom logic. 
             </p>
-            
-            <div class="btn-outline">
-      <a href="#" class="btn btn-flare">View Components</a>
 
-    </div>
+            <div class="btn-outline">
+                <a href="#" class="btn btn-flare">View Components</a>
+            </div>
         </div>
 
     </div>
@@ -69,14 +87,29 @@
         <h2>Full Builds</h2>
         <div class="col-xs-12 col-sm-6">
             <p class="lead">
-                Pre compiled - ready to use.
+                Don't need to develop an application from scratch? No problem, check out fully implemented Flare Media Players, and extend existing builds to meet your needs.
+            </p>
+            
+            <p class="lead">
+                Front end installation can be as simple as including a script, or require the module into your application.
             </p>
         </div>
 
         <div class="col-xs-12 col-sm-6">
-            <p class="lead">
-                Try out some fully compiled Flare Media Players.
-            </p>
+ 
+            <pre class="code"><code >                     
+&#x3C;!-- custom flare media player tag--&#x3E;
+&lt;flaremediaplayer type=&quot;basic-player&quot;&gt;
+
+    &#x3C;!-- Support common tags, or add custom support --&#x3E;
+    &lt;source src=&quot;intro.ogg&quot;/&gt;
+
+&lt;/flaremediaplayer&gt;
+
+&#x3C;script src=&#x22;media-player.js&#x22;&#x3E;&#x3C;/script&#x3E;
+
+            </code>
+            </pre>
         </div>
 
     </div>
