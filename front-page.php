@@ -55,7 +55,7 @@
             
         </div>
         <div class="col-xs-12 col-sm-6">
-            <img src="http://localhost:8888/FlareWordpress/wp-content/uploads/2016/07/Flare-digram1.png"/>
+            <img src="<?php echo get_template_directory_uri(); ?>/img/flare-digram1.png"/>
         </div>
         
     </div>
@@ -64,7 +64,7 @@
     <div class="row featurette">
         <h2>Components</h2>
         <div class="col-xs-12 col-sm-6">
-            <img src="http://localhost:8888/FlareWordpress/wp-content/uploads/2016/07/Flare-example-player.png"/>
+            <img src="<?php echo get_template_directory_uri(); ?>/img/flare-example-player.png"/>
         </div>
 
         <div class="col-xs-12 col-sm-6">

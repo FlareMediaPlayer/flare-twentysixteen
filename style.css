@@ -50,11 +50,15 @@ pre.code{
 }
 
 .navbar-brand {
-    padding:10px 15px;
+    padding:12px 15px;
 }
 .navbar-brand img{
     height:100%;
+    
 }
+
+
+
 /**********************************
 * FOOTER
 **********************************/
@@ -238,6 +242,7 @@ pre.code{
 
 .splash-logo{
     width:80%;
+    max-width: 600px;
 }
 
 
