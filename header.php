@@ -26,7 +26,7 @@
                                     <span class="icon-bar"></span>
                                 </button>
                                 <a class="navbar-brand" href="<?php echo home_url(); ?>">
-                                    <?php bloginfo('name'); ?>
+                                    <img src="<?php echo get_template_directory_uri(); ?>/img/flaremediaplayerlogo-sm.png"/>
                                 </a>
                             </div>
 

@@ -2,7 +2,8 @@
 
 <section class="front-page-splash jumbotron">
     <div class="container">
-        <h1>Flare Media Player</h1>
+        <!--<h1>Flare Media Player</h1>-->
+        <img class="splash-logo" src="<?php echo get_template_directory_uri(); ?>/img/flare-colored.png"/>
         <p>Multi Media Streaming Framework</p>
 
         <a href="www.github.com/flaremediaplayer" class="btn btn-flare-light" role="button">On Github</a>
