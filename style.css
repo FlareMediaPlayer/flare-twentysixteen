@@ -154,8 +154,12 @@ section.page{
  
 .nav > li > a:hover 
 {
-    background-color: #F2A649;
+    background-color: #F2A649 !important;
     color: black;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+    background-color: transparent;
 }
 
 .nav > li > .dropdown a:focus{
