@@ -2,6 +2,7 @@
 
 // Register Custom Navigation Walker
 require_once('wp_bootstrap_navwalker.php');
+require_once ('widgets/github.php');
 
 
 if (!function_exists('flare-twentysixteen_setup')) :
@@ -46,7 +47,7 @@ function flare_twentysixteen_component_init() {
         'has_archive' => true,
         'hierarchical' => true,
         'menu_position' => null,
-        'supports' => array('title', 'editor', 'excerpt'),
+        'supports' => array('title', 'editor', 'excerpt' , 'custom-fields' , 'page-attributes' ),
         'taxonomies' => array('component-category', 'component-tag'),
         'menu_icon' => 'dashicons-admin-generic'
     );
@@ -85,10 +86,10 @@ function flare_twentysixteen_component_taxonomies() {
         'show_ui' => true,
         'show_admin_column' => true,
         'query_var' => true,
-        'rewrite' => array('slug' => 'component-category'),
+        'rewrite' => array('slug' => 'components-category'),
     );
 
-    register_taxonomy('component-category', array('components'), $args);
+    register_taxonomy('components-category', array('components'), $args);
 
     // Add new taxonomy, NOT hierarchical (like tags)
     $labels = array(
@@ -120,7 +121,7 @@ function flare_twentysixteen_component_taxonomies() {
         'rewrite' => array('slug' => 'components-tag'),
     );
 
-    register_taxonomy('component-tag', 'components', $args);
+    register_taxonomy('components-tag', 'components', $args);
 }
 
 function flare_twentysixteen_scripts() {
@@ -137,3 +138,5 @@ function flare_twentysixteen_scripts() {
 }
 
 add_action('wp_enqueue_scripts', 'flare_twentysixteen_scripts');
+
+

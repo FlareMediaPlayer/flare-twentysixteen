@@ -61,6 +61,9 @@ section.page{
     padding: 40px 0;
 }
 
+a{
+    color:#F27127;
+}
 
 /**********************************
 * FOOTER
@@ -364,4 +367,31 @@ section.page{
 .lg-icon{
     font-size: 70px;
     display: block;
+}
+
+/**********************************
+* Widgets
+**********************************/
+.widget{
+    margin: 0 0 40px 0;
+    color: rgba(0,0,0,0.5);
+}
+
+.widget h3{
+    margin: 0;
+    padding: 0;
+    color: #333333;
+}
+
+.widget ul{
+    padding: 0;
+}
+
+.widget li{
+    list-style: none;
+    border-bottom: 1px solid #eeeeee;
+    padding: 10px 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }

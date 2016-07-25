@@ -14,6 +14,7 @@ while (have_posts()) : the_post();
         <div class="container">
             <div class="col-xs-12">
                 <h1><?php the_title(); ?></h1>
+                
             </div>
         </div>
     </header>
