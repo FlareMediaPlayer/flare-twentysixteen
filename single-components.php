@@ -82,23 +82,11 @@ while (have_posts()) : the_post();
 
 
                 <?php
-                if ($meta['github']):
+                if ($meta['github'])
+                    flare_single_widget( 'Github' );
+                ?>
 
-                    $link = $meta['github'][0];
-                    ?>
-                    <div class="widget" id="git" data="<?php echo $meta['github'][0] ?>">
-                        <h3>Github</h3> 
-                        <ul>
-                            <li>
-                                <a href="<?php //echo $gitData->html_url;    ?>"><?php //echo remove_http($gitData->html_url);    ?></a>
-                            </li>
-
-                            <li>
-                                <a href="<?php //echo $gitData->html_url . "/issues";    ?>"><?php //echo "Open Issues";    ?></a> : <?php //echo $gitData->open_issues_count    ?>
-                            </li>
-                        </ul>
-                    </div>
-                <?php endif; ?>
+                 
 
                 <div class="widget">
                     <h3>NPM</h3> 
@@ -113,20 +101,7 @@ while (have_posts()) : the_post();
                     </ul>
                 </div>
                 
-                <?php the_widget( 'Github' ); ?> 
-
-
-
-
-
-
-
-
-
-
-
-
-
+               
             </div>
 
             <div class="col-sm-8 col-sm-pull-4">

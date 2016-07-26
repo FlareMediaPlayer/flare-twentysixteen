@@ -140,3 +140,14 @@ function flare_twentysixteen_scripts() {
 add_action('wp_enqueue_scripts', 'flare_twentysixteen_scripts');
 
 
+
+function flare_single_widget($widget) {
+    $args = array(
+        'before_title' => "<div class=\"widget\">",
+        'after_widget' => "</div>",
+        'before_title' => "<h3>",
+        'after_title' => "</h3>"
+    );
+    the_widget($widget, null, $args);
+}
+
