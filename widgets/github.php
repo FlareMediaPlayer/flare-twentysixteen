@@ -35,6 +35,7 @@ class Github extends WP_Widget {
                 echo "<ul>";
                 echo "<li><a href=\"$link\">$display_link</a></li>";
                 echo "</ul>";
+                //var_dump($args['after_widget']);
                 echo $args['after_widget'];
                 
 	}

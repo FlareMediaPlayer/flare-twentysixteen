@@ -3,6 +3,7 @@
 // Register Custom Navigation Walker
 require_once('wp_bootstrap_navwalker.php');
 require_once ('widgets/github.php');
+require_once ('widgets/FlareComponents.php');
 
 
 if (!function_exists('flare-twentysixteen_setup')) :

@@ -85,21 +85,11 @@ while (have_posts()) : the_post();
                 if ($meta['github'])
                     flare_single_widget( 'Github' );
                 ?>
+                
+                <?php flare_single_widget('FlareComponents') ?>
 
-                 
+          
 
-                <div class="widget">
-                    <h3>NPM</h3> 
-                    <ul>
-                        <li>
-                            <a href="<?php //echo $gitData->html_url;     ?>"><?php //echo remove_http($gitData->html_url);     ?></a>
-                        </li>
-
-                        <li>
-                            <a href="<?php //echo $gitData->html_url . "/issues";     ?>"><?php //echo "Open Issues";     ?></a> : <?php //echo $gitData->open_issues_count     ?>
-                        </li>
-                    </ul>
-                </div>
                 
                
             </div>
