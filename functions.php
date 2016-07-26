@@ -1,9 +1,13 @@
 <?php
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 // Register Custom Navigation Walker
 require_once('wp_bootstrap_navwalker.php');
 require_once ('widgets/github.php');
 require_once ('widgets/FlareComponents.php');
+require_once ('widgets/CompleteBuilds.php');
+require_once ('widgets/ComponentOverview.php');
 
 
 if (!function_exists('flare-twentysixteen_setup')) :
@@ -60,17 +64,18 @@ add_action('init', 'flare_twentysixteen_component_init');
 
 
 function flare_twentysixteen_build_init() {
+    
     $labels = array(
         'name' => _x('Complete Builds', 'post type general name', 'flare_twentysixteen'),
         'singular_name' => _x('Complete Build', 'post type singular name', 'flare_twentysixteen'),
         'menu_name' => _x('Complete Builds', 'admin menu', 'flare_twentysixteen'),
-        'name_admin_bar' => _x('Complete Build', 'add new on admin bar', 'flare_twentysixteen'),
-        'add_new' => _x('Add New', 'complete_build', 'flare_twentysixteen'),
+        'name_admin_bar' => _x('Complete Builds', 'add new on admin bar', 'flare_twentysixteen'),
+        'add_new' => _x('Add New Build', 'complete_build', 'flare_twentysixteen'),
         'add_new_item' => __('Add New Build', 'flare_twentysixteen'),
         'new_item' => __('New Build', 'flare_twentysixteen'),
         'edit_item' => __('Edit Build', 'flare_twentysixteen'),
         'view_item' => __('View Build', 'flare_twentysixteen'),
-        'all_items' => __('All Build', 'flare_twentysixteen'),
+        'all_items' => __('All Builds', 'flare_twentysixteen'),
         'search_items' => __('Search Builds', 'flare_twentysixteen'),
         'parent_item_colon' => __('Parent Builds:', 'flare_twentysixteen'),
         'not_found' => __('No builds found.', 'flare_twentysixteen'),
@@ -91,7 +96,7 @@ function flare_twentysixteen_build_init() {
         'hierarchical' => true,
         'menu_position' => null,
         'supports' => array('title', 'editor', 'excerpt' , 'custom-fields' , 'page-attributes' ),
-        'taxonomies' => null, //add more later
+        //'taxonomies' => null, //add more later
         'menu_icon' => 'dashicons-video-alt'
     );
 

@@ -61,8 +61,17 @@ section.page{
     padding: 40px 0;
 }
 
+article{
+    padding: 10px 0;
+    border-bottom: 1px solid #eeeeee;
+}
+
 a{
     color:#F27127;
+}
+
+strong{
+    color: rgba(0,0,0,0.5);
 }
 
 /**********************************
