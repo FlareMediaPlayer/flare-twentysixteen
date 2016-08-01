@@ -8,6 +8,7 @@ require_once ('widgets/github.php');
 require_once ('widgets/FlareComponents.php');
 require_once ('widgets/CompleteBuilds.php');
 require_once ('widgets/ComponentOverview.php');
+require_once ('widgets/Npm.php');
 
 
 if (!function_exists('flare-twentysixteen_setup')) :

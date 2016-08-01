@@ -37,6 +37,11 @@ while (have_posts()) : the_post();
                     flare_single_widget( 'Github' );
                 ?>
                 
+                <?php
+                if (array_key_exists ( 'npm' , $meta ))
+                    flare_single_widget( 'Npm' );
+                ?>
+                
                 <div class="hidden-xs">
                 <?php flare_single_widget('FlareComponents') ?>
                 
@@ -52,7 +57,9 @@ while (have_posts()) : the_post();
             </div>
 
             <div class="col-sm-8 col-sm-pull-4">
+                <div class="main-content">
                 <?php the_content(); ?> 
+                </div>
             </div>
 
         </div>
