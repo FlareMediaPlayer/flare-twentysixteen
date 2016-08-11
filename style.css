@@ -85,6 +85,9 @@ strong{
     border-bottom: 1px solid #dddddd;
 }
 
+.post-pagination{
+   margin-top:20px; 
+}
 /**********************************
 * FOOTER
 **********************************/

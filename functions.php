@@ -14,6 +14,9 @@ require_once ('widgets/Npm.php');
 if (!function_exists('flare-twentysixteen_setup')) :
 
     function flare_twentysixteen_setup() {
+    
+        add_theme_support( 'post-thumbnails' );
+        
         register_nav_menus(array(
             'main' => __('Main Menu', 'flare-twentysixteen')
         ));
