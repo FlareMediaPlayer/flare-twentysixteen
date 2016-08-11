@@ -25,9 +25,10 @@ class FlareComponentOverview extends WP_Widget {
      * @param array $instance Saved values from database.
      */
     public function widget($args, $instance) {
-
+        
+        global $post;
         $meta = get_post_meta(get_the_ID());
-        $categories = get_terms('components-category');
+        $categories = wp_get_post_terms($post->ID, 'components-category');
         $tags = get_terms('components-tag');
 
         echo $args['before_widget'];
@@ -42,8 +43,6 @@ class FlareComponentOverview extends WP_Widget {
         for ($i = 0; $i < $itemCount; $i++) {
             $name = $categories[$i]->name;
             $link = get_term_link($categories[$i]);
-            //var_dump($link);
-            //echo "<a href=\"$link\">$name</a>";
             echo "<a href=\"$link\">$name</a>";
             if ($i < $commaRange) {
                 echo ", ";
