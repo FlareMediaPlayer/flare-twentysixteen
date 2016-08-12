@@ -35,6 +35,16 @@ class FlareComponentOverview extends WP_Widget {
         echo $args['before_title'] . "Component Overview" . $args['after_title'];
         echo "<ul>";
 
+        echo "<li>";
+        echo "<strong>Description</strong> : ";
+        $description = get_post_meta($post->ID, "component_description", true);
+        if ($description) {
+            echo $description;
+        } else {
+            echo "No Description Available";
+        }
+        echo "</li>";
+
         $itemCount = count($categories);
         $commaRange = $itemCount - 1;
 

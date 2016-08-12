@@ -28,7 +28,7 @@
                             <ul class="list">
                                 <li ><a href="#">Feature Request</a></li>
                                 <li><a href="#">Forum</a></li>
-                                <li><a href="#">Blog</a></li>
+                                <li><a href="<?php echo get_site_url(); ?>/contact">News</a></li>
                             </ul>
                         </div>
 

@@ -59,15 +59,6 @@ while (have_posts()) : the_post();
             <div class="col-sm-8 col-sm-pull-4">
                 <div class="main-content">
                     
-                    <h2>Description</h2>
-                    <?php $description = get_post_meta($post->ID, "component_description", true);
-                        if ($description){
-                            echo $description;
-                        }else{
-                            echo "Coming Soon!";
-                        }
-                    ?>
-                    
                 <?php the_content(); ?> 
                 </div>
             </div>
