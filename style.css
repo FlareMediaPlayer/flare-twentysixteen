@@ -423,6 +423,10 @@ strong{
     padding: 10px 0;
     text-overflow: ellipsis;
     overflow: hidden;
+    /*white-space: nowrap;*/
+}
+
+.hide-extra{
     white-space: nowrap;
 }
 

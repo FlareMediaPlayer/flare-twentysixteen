@@ -61,7 +61,7 @@ class FlareComponentOverview extends WP_Widget {
 
                 echo "<a href=\"$link\">$name</a>";
                 if ($i < $commaRange)
-                    echo " , ";
+                    echo ", ";
             }
 
             echo "</li>";
@@ -70,6 +70,8 @@ class FlareComponentOverview extends WP_Widget {
 
         echo "</ul>";
         //var_dump($args['after_widget']);
+        
+
         echo $args['after_widget'];
     }
 

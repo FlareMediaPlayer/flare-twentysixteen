@@ -58,13 +58,68 @@ function flare_twentysixteen_component_init() {
         'menu_position' => null,
         'supports' => array('title', 'editor', 'excerpt' , 'custom-fields' , 'page-attributes' ),
         'taxonomies' => array('component-category', 'component-tag'),
-        'menu_icon' => 'dashicons-admin-generic'
+        'menu_icon' => 'dashicons-admin-generic',
+        'register_meta_box_cb' => 'add_component_metaboxes'
     );
 
     register_post_type('components', $args);
 }
 
 add_action('init', 'flare_twentysixteen_component_init');
+
+function add_component_metaboxes() {
+
+    add_meta_box('flare_component_description', 'Component Description', 'flare_component_description', 'components', 'normal', 'high');
+
+    
+}
+
+function save_flare_component_description() {
+    global $post;
+
+    if (!wp_verify_nonce($_POST['component_meta_noncename'], plugin_basename(__FILE__))) {
+
+        return $post->ID;
+    }
+
+
+    if (!current_user_can('edit_post', $post->ID))
+        return $post->ID;
+
+    $value = $_POST['component_description'];
+
+
+
+    if ($post->post_type == 'revision')
+        return; // Don't store custom data twice
+
+
+    if (get_post_meta($post->ID, $key, FALSE)) {
+
+        update_post_meta($post->ID, 'component_description', $value);
+    } else {
+
+        add_post_meta($post->ID, 'component_description', $value);
+    }
+
+    if (!$value)
+        delete_post_meta($post->ID, $key); // Delete if blank
+}
+
+add_action('save_post', 'save_flare_component_description'); 
+
+function flare_component_description(){
+    global $post;
+    
+  
+
+    echo '<input type="hidden" name="component_meta_noncename" id="eventmeta_noncename" value="' .
+    wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
+    
+    $data = get_post_meta($post->ID, 'component_description', true);
+    echo '<input type="text" name="component_description" value="' . $data  . '" class="widefat" />';
+
+}
 
 
 function flare_twentysixteen_build_init() {
