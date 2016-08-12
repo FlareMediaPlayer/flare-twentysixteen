@@ -19,7 +19,7 @@
                             <ul class="list">
                                 <li><a href="#">About</a></li>
                                 <li ><a href="#">Team</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><a href="<?php echo get_site_url(); ?>/contact">Contact</a></li>
                             </ul>
                         </div>
 

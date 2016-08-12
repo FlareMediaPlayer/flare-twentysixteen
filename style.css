@@ -121,6 +121,11 @@ strong{
     color:white;   
 }
 
+.post-date{
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
 /**********************************
 * HEADER
 **********************************/
@@ -419,4 +424,18 @@ strong{
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+}
+
+/**********************************
+* contact form
+**********************************/
+
+/**********************************
+* POSTS
+**********************************/
+.post-nav{
+    border-bottom:1px solid #eeeeee;
+    border-top:1px solid #eeeeee;
+    padding: 10px 0;
+    margin: 40px 0 0 0;
 }
