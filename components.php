@@ -81,7 +81,7 @@ function save_flare_component_description() {
     }
 
     if (!$value)
-        delete_post_meta($post->ID, $key); // Delete if blank
+        delete_post_meta($post->ID, 'component_description'); // Delete if blank
 }
 
 add_action('save_post', 'save_flare_component_description'); 

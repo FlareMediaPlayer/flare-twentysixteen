@@ -85,6 +85,10 @@ strong{
     border-bottom: 1px solid #dddddd;
 }
 
+.main-content h4{
+    font-weight: bold;
+}
+
 .post-pagination{
    margin-top:20px; 
 }
