@@ -31,11 +31,13 @@ while (have_posts()) : the_post();
                 <!--<h2>Overview</h2>-->
                 <?php flare_single_widget('FlareComponentOverview') ?>
 
+                <?php flare_single_widget('DownloadScript') ?>
                 
                 <?php
                 if (array_key_exists ( 'github' , $meta ))
                     flare_single_widget( 'Github' );
                 ?>
+                
                 
                 <?php
                 if (array_key_exists ( 'npm' , $meta ))

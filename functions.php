@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 require_once('wp_bootstrap_navwalker.php');
 require_once ('widgets/github.php');
 require_once ('widgets/FlareComponents.php');
+require_once ('widgets/DownloadScript.php');
 require_once ('widgets/CompleteBuilds.php');
 require_once ('widgets/ComponentOverview.php');
 require_once ('widgets/Npm.php');
@@ -153,7 +154,7 @@ function flare_twentysixteen_scripts() {
     //loading scripts for the components page
     
     if($post->post_type == 'components'){
-        $data = get_post_meta($post->ID, 'component_script', true);
+        $data = get_post_meta($post->ID, 'component_script_production', true);
         if ($data){
             wp_enqueue_script('component-script', $data);
         }
