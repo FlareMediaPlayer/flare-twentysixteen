@@ -154,9 +154,9 @@ function flare_twentysixteen_scripts() {
     //loading scripts for the components page
     
     if($post->post_type == 'components'){
-        $data = get_post_meta($post->ID, 'component_script_production', true);
+        $data = get_post_meta($post->ID, '_component_script_production', true);
         if ($data){
-            wp_enqueue_script('component-script', $data);
+            wp_enqueue_script('_component_script_production', $data);
         }
     }
 }

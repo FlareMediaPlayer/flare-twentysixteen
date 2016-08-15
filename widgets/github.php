@@ -26,8 +26,9 @@ class Github extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
             
-                $meta = get_post_meta(get_the_ID());
-                $repo = $meta['github'][0];
+                global $post;
+
+                $repo = get_post_meta($post->ID, '_component_details_github', true);
                 $link = "https://github.com/" . $this->organization . "/" . $repo;
                 $display_link = "github.com/" . $this->organization . "/" . $repo;
 		echo $args['before_widget'];
@@ -35,8 +36,6 @@ class Github extends WP_Widget {
                 echo "<ul>";
                 echo "<li><div class=\"hide-extra-container\"><div class=\"hide-extra-inner\"><div class=\"hide-extra-content\"><a style=\"white-space: nowrap;\" href=\"$link\">$display_link</a></div></div></div></li>";
                 echo "</ul>";
-                //class=\"hide-extra\"
-                //var_dump($args['after_widget']);
                 echo $args['after_widget'];
                 
 	}

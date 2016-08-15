@@ -25,24 +25,25 @@ class DownloadScript extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
+            
                 global $post;
-                $production = get_post_meta($post->ID, 'component_script_production', true);
-                $development = get_post_meta($post->ID, 'component_script_development', true);
+                $production = get_post_meta($post->ID, '_component_script_production', true);
+                $development = get_post_meta($post->ID, '_component_script_development', true);
                 
                 if($production){
-                   $production_details =  $production;
+                   $production_details =  "<a href=\"$development\" download>". basename($production) ."</a>";
                 }else{
                     $production_details =  "Not Available.";
                 }
                 
                 if($development){
-                   $development_details = $development;
+                   $development_details = "<a href=\"$development\" download>". basename($development) ."</a>";
                 }else{
                     $production_details =  "Not Available.";
                 }
                 
 		echo $args['before_widget'];
-		echo $args['before_title'] . "Download" . $args['after_title'];
+		echo $args['before_title'] . "Download Latest Build" . $args['after_title'];
                 echo "<ul>";
                 echo "<li><strong>Production</strong> : $production_details</li>";
                 echo "<li><strong>Development</strong> : $production_details</li>";

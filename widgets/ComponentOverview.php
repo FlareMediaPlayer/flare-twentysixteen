@@ -37,7 +37,7 @@ class FlareComponentOverview extends WP_Widget {
 
         echo "<li>";
         echo "<strong>Description</strong> : ";
-        $description = get_post_meta($post->ID, "component_description", true);
+        $description = get_post_meta($post->ID, "_component_description", true);
         if ($description) {
             echo $description;
         } else {
@@ -45,6 +45,14 @@ class FlareComponentOverview extends WP_Widget {
         }
         echo "</li>";
 
+        $version = get_post_meta($post->ID, "_component_details_version", true);
+        if (!$version){
+            $version = "N/A";
+        }
+        echo "<li>";
+        echo "<strong>Latest Version</strong> : $version";
+        echo "</li>";
+        
         $itemCount = count($categories);
         $commaRange = $itemCount - 1;
 

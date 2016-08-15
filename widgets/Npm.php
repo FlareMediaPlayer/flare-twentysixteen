@@ -23,8 +23,10 @@ class Npm extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
-                $meta = get_post_meta(get_the_ID());
-                $package = $meta['npm'][0];
+                global $post;
+            
+
+                $package = get_post_meta($post->ID, '_component_details_npm', true);
 		echo $args['before_widget'];
 		echo $args['before_title'] . "Npm" . $args['after_title'];
                 echo "<ul>";

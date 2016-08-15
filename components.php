@@ -31,7 +31,7 @@ function flare_twentysixteen_component_init() {
         'has_archive' => true,
         'hierarchical' => true,
         'menu_position' => null,
-        'supports' => array('title', 'editor', 'excerpt' , 'custom-fields' , 'page-attributes' ),
+        'supports' => array('title', 'editor', 'excerpt', 'custom-fields', 'page-attributes'),
         'taxonomies' => array('component-category', 'component-tag'),
         'menu_icon' => 'dashicons-admin-generic',
         'register_meta_box_cb' => 'add_component_metaboxes'
@@ -46,12 +46,11 @@ function add_component_metaboxes() {
 
     add_meta_box('flare_component_description', 'Component Description', 'flare_component_description', 'components', 'normal', 'high');
     add_meta_box('flare_component_script', 'Component Script', 'flare_component_script', 'components', 'normal', 'high');
-
-    
+    add_meta_box('flare_component_details', 'Component Details', 'flare_component_details', 'components', 'normal', 'high');
 }
 
 function save_flare_component_description() {
-    
+
     global $post;
 
     if (!wp_verify_nonce($_POST['component_meta_noncename'], plugin_basename(__FILE__))) {
@@ -63,7 +62,9 @@ function save_flare_component_description() {
     if (!current_user_can('edit_post', $post->ID))
         return $post->ID;
 
-    $value = $_POST['component_description'];
+    $key = '_component_description';
+
+    $value = $_POST[$key];
 
 
 
@@ -71,54 +72,51 @@ function save_flare_component_description() {
         return; // Don't store custom data twice
 
 
-    if (get_post_meta($post->ID, 'component_description', FALSE)) {
+    if (get_post_meta($post->ID, $key, FALSE)) {
 
-        update_post_meta($post->ID, 'component_description', $value);
-        
+        update_post_meta($post->ID, $key, $value);
     } else {
 
-        add_post_meta($post->ID, 'component_description', $value);
+        add_post_meta($post->ID, $key, $value);
     }
 
     if (!$value)
-        delete_post_meta($post->ID, 'component_description'); // Delete if blank
+        delete_post_meta($post->ID, $key); // Delete if blank
 }
 
-add_action('save_post', 'save_flare_component_description'); 
+add_action('save_post', 'save_flare_component_description');
 
-function flare_component_description(){
-    
+function flare_component_description() {
+
     global $post;
-  
+
 
     echo '<input type="hidden" name="component_meta_noncename" id="component_description_meta_noncename" value="' .
-    wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
-    
-    $data = get_post_meta($post->ID, 'component_description', true);
-    echo '<input type="text" name="component_description" value="' . $data  . '" class="widefat" />';
+    wp_create_nonce(plugin_basename(__FILE__)) . '" />';
 
+    $data = get_post_meta($post->ID, '_component_description', true);
+    echo '<input type="text" name="_component_description" value="' . $data . '" class="widefat" />';
 }
 
-function flare_component_script(){
-    
+function flare_component_script() {
+
     global $post;
 
-    
-    echo '<input type="hidden" name="component_script_meta_noncename" id="component_script_meta_noncename" value="' .
-    wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
-    
-    echo '<p><strong>Production</strong></p>';
-    $data = get_post_meta($post->ID, 'component_script_production', true);
-    echo '<input type="text" name="component_script_production" value="' . $data  . '" class="widefat"/>';
-    
-    echo '<p><strong>Development</strong></p>';
-    $data = get_post_meta($post->ID, 'component_script_development', true);
-    echo '<input type="text" name="component_script_development" value="' . $data  . '" class="widefat"/>';
 
+    echo '<input type="hidden" name="component_script_meta_noncename" id="component_script_meta_noncename" value="' .
+    wp_create_nonce(plugin_basename(__FILE__)) . '" />';
+
+    echo '<p><strong>Production</strong></p>';
+    $data = get_post_meta($post->ID, '_component_script_production', true);
+    echo '<input type="text" name="_component_script_production" value="' . $data . '" class="widefat"/>';
+
+    echo '<p><strong>Development</strong></p>';
+    $data = get_post_meta($post->ID, '_component_script_development', true);
+    echo '<input type="text" name="_component_script_development" value="' . $data . '" class="widefat"/>';
 }
 
 function save_flare_component_script() {
-    
+
     global $post;
 
     if (!wp_verify_nonce($_POST['component_script_meta_noncename'], plugin_basename(__FILE__))) {
@@ -130,9 +128,9 @@ function save_flare_component_script() {
     if (!current_user_can('edit_post', $post->ID))
         return $post->ID;
 
-    $value = $_POST['component_script_production'];
+    $value = $_POST['_component_script_production'];
 
-    $key = 'component_script_production';
+    $key = '_component_script_production';
 
     if ($post->post_type == 'revision')
         return; // Don't store custom data twice
@@ -141,7 +139,6 @@ function save_flare_component_script() {
     if (get_post_meta($post->ID, $key, FALSE)) {
 
         update_post_meta($post->ID, $key, $value);
-        
     } else {
 
         add_post_meta($post->ID, $key, $value);
@@ -149,11 +146,12 @@ function save_flare_component_script() {
 
     if (!$value)
         delete_post_meta($post->ID, $key); // Delete if blank
-    
-    //Now do development script
-    
-    $key = 'component_script_development';
-    
+
+        
+//Now do development script
+
+    $key = '_component_script_development';
+
     $value = $_POST[$key];
 
     if ($post->post_type == 'revision')
@@ -163,7 +161,6 @@ function save_flare_component_script() {
     if (get_post_meta($post->ID, $key, FALSE)) {
 
         update_post_meta($post->ID, $key, $value);
-        
     } else {
 
         add_post_meta($post->ID, $key, $value);
@@ -173,4 +170,106 @@ function save_flare_component_script() {
         delete_post_meta($post->ID, $key); // Delete if blank
 }
 
-add_action('save_post', 'save_flare_component_script'); 
+add_action('save_post', 'save_flare_component_script');
+
+function flare_component_details() {
+
+    global $post;
+
+
+    echo '<input type="hidden" name="component_details_meta_noncename" id="component_details_meta_noncename" value="' .
+    wp_create_nonce(plugin_basename(__FILE__)) . '" />';
+
+    echo '<p><strong>Version</strong></p>';
+    $data = get_post_meta($post->ID, '_component_details_version', true);
+    echo '<input type="text" name="_component_details_version" value="' . $data . '" class="widefat"/>';
+
+    echo '<p><strong>Description</strong></p>';
+    $data = get_post_meta($post->ID, '_component_details_desciption', true);
+    echo '<textarea rows="2" cols="40" name="_component_details_desciption" class="widefat">' . $data . '</textarea>';
+
+    echo '<p><strong>Github</strong></p>';
+    $data = get_post_meta($post->ID, '_component_details_github', true);
+    echo '<input type="text" name="_component_details_github" value="' . $data . '" class="widefat"/>';
+
+    echo '<p><strong>NPM</strong></p>';
+    $data = get_post_meta($post->ID, '_component_details_npm', true);
+    echo '<input type="text" name="_component_details_npm" value="' . $data . '" class="widefat"/>';
+}
+
+function save_flare_component_details() {
+
+    global $post;
+
+    if (!wp_verify_nonce($_POST['component_details_meta_noncename'], plugin_basename(__FILE__))) {
+
+        return $post->ID;
+    }
+
+
+    if (!current_user_can('edit_post', $post->ID))
+        return $post->ID;
+
+    $key = '_component_details_version';
+
+    $value = $_POST[$key];
+
+
+    if ($post->post_type == 'revision')
+        return; // Don't store custom data twice
+
+
+    if (get_post_meta($post->ID, $key, FALSE)) {
+
+        update_post_meta($post->ID, $key, $value);
+    } else {
+
+        add_post_meta($post->ID, $key, $value);
+    }
+
+    if (!$value)
+        delete_post_meta($post->ID, $key); // Delete if blank
+
+        
+//Now do development script
+
+    $key = '_component_details_github';
+
+    $value = $_POST[$key];
+
+    if ($post->post_type == 'revision')
+        return; // Don't store custom data twice
+
+
+    if (get_post_meta($post->ID, $key, FALSE)) {
+
+        update_post_meta($post->ID, $key, $value);
+    } else {
+
+        add_post_meta($post->ID, $key, $value);
+    }
+
+    if (!$value)
+        delete_post_meta($post->ID, $key); // Delete if blank
+
+    $key = '_component_details_npm';
+
+    $value = $_POST[$key];
+
+    if ($post->post_type == 'revision')
+        return; // Don't store custom data twice
+
+
+    if (get_post_meta($post->ID, $key, FALSE)) {
+
+        update_post_meta($post->ID, $key, $value);
+    } else {
+
+        add_post_meta($post->ID, $key, $value);
+    }
+
+    if (!$value)
+        delete_post_meta($post->ID, $key); // Delete if blank
+}
+
+add_action('save_post', 'save_flare_component_details');

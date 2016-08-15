@@ -34,13 +34,13 @@ while (have_posts()) : the_post();
                 <?php flare_single_widget('DownloadScript') ?>
                 
                 <?php
-                if (array_key_exists ( 'github' , $meta ))
+                if (get_post_meta($post->ID, '_component_details_github', true))
                     flare_single_widget( 'Github' );
                 ?>
                 
                 
                 <?php
-                if (array_key_exists ( 'npm' , $meta ))
+                if (get_post_meta($post->ID, '_component_details_npm', true))
                     flare_single_widget( 'Npm' );
                 ?>
                 
