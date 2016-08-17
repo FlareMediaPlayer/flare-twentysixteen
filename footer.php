@@ -17,7 +17,7 @@
                         <div class="col-md-3 col-xs-6">
                             <h4>Flare Team</h4>
                             <ul class="list">
-                                <li><a href="#">About</a></li>
+                                <li><a href="<?php echo get_site_url(); ?>/about">About</a></li>
                                 <li ><a href="#">Team</a></li>
                                 <li><a href="<?php echo get_site_url(); ?>/contact">Contact</a></li>
                             </ul>

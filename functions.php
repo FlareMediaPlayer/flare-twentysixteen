@@ -28,8 +28,6 @@ endif;
 add_action('after_setup_theme', 'flare_twentysixteen_setup');
 
 
-
-
 function flare_twentysixteen_build_init() {
     
     $labels = array(
@@ -136,10 +134,14 @@ function flare_twentysixteen_component_taxonomies() {
     register_taxonomy('components-tag', 'components', $args);
 }
 
+
+add_action('wp_enqueue_scripts', 'flare_twentysixteen_scripts');
+
 function flare_twentysixteen_scripts() {
     
     global $post;
-    
+  
+
     wp_enqueue_style('fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800');
     wp_enqueue_style('fontawesome', get_template_directory_uri() . '/css/font-awesome.min.css');
     wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/css/bootstrap.min.css');
@@ -151,19 +153,16 @@ function flare_twentysixteen_scripts() {
     wp_enqueue_script('highlight-js', get_template_directory_uri() . '/plugins/highlight/highlight.pack.js');
     wp_enqueue_script('flare-main-js', get_template_directory_uri() . '/js/main.js');
     
-    //loading scripts for the components page
     
-    if($post->post_type == 'components'){
+    //loading scripts for the components page
+
+    if (isset($post) && $post->post_type == 'components') {
         $data = get_post_meta($post->ID, '_component_script_production', true);
-        if ($data){
+        if ($data) {
             wp_enqueue_script('_component_script_production', $data);
         }
     }
 }
-
-add_action('wp_enqueue_scripts', 'flare_twentysixteen_scripts');
-
-
 
 function flare_single_widget($widget) {
     $args = array(

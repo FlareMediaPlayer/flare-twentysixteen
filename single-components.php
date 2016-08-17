@@ -8,6 +8,15 @@ $tags = get_terms('components-tag');
 
 <?php
 // Start the loop.
+//var_dump(get_query_var('docs-version'));
+//var_dump(get_query_var('docs-page'));
+//var_dump($post->post_name);
+
+$docs_dir = content_url(). "/flare" . "/flare-icons" . "/docs/";
+//$docs_handle = opendir($docs_dir);
+//var_dump($docs_handle );
+//scandir($docs_handle );
+
 while (have_posts()) : the_post();
     ?>
 

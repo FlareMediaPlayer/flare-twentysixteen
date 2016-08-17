@@ -29,7 +29,7 @@ class FlareComponentOverview extends WP_Widget {
         global $post;
         $meta = get_post_meta(get_the_ID());
         $categories = wp_get_post_terms($post->ID, 'components-category');
-        $tags = get_terms('components-tag');
+        $tags = get_the_terms($post->ID, 'components-tag');
 
         echo $args['before_widget'];
         echo $args['before_title'] . "Component Overview" . $args['after_title'];
@@ -37,7 +37,7 @@ class FlareComponentOverview extends WP_Widget {
 
         echo "<li>";
         echo "<strong>Description</strong> : ";
-        $description = get_post_meta($post->ID, "_component_description", true);
+        $description = get_post_meta($post->ID, "_component_details_description", true);
         if ($description) {
             echo $description;
         } else {
@@ -87,7 +87,6 @@ class FlareComponentOverview extends WP_Widget {
         endif;
 
         echo "</ul>";
-        //var_dump($args['after_widget']);
         
 
         echo $args['after_widget'];
