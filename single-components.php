@@ -68,6 +68,21 @@ while (have_posts()) : the_post();
 
                     <?php the_content(); ?> 
                     
+                    <?php
+                    $docs = get_post_meta($post->ID, '_component_jsdoc', true);
+                    if($docs){
+                        echo '<h2>API Documentation</h2>';
+                        $decoded_docs = json_decode($docs)->docs;
+                        //var_dump(count($decoded_docs));
+                        foreach($decoded_docs as $doc){
+                            
+                            if(property_exists ($doc,'name')){
+                                var_dump($doc->name);
+                            }
+                        }
+                    }
+                    ?>
+                    
 
                 </div>
             </div>

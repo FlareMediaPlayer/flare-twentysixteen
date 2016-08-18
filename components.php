@@ -44,7 +44,7 @@ add_action('init', 'flare_twentysixteen_component_init');
 
 function add_component_metaboxes() {
 
-    add_meta_box('flare_component_description', 'Component Description', 'flare_component_description', 'components', 'normal', 'high');
+    //add_meta_box('flare_component_description', 'Component Description', 'flare_component_description', 'components', 'normal', 'high');
     add_meta_box('flare_component_script', 'Component Script', 'flare_component_script', 'components', 'normal', 'high');
     add_meta_box('flare_component_details', 'Component Details', 'flare_component_details', 'components', 'normal', 'high');
     add_meta_box('flare_component_jsdoc', 'JSDoc', 'flare_component_jsdoc', 'components', 'side', 'default');
@@ -54,52 +54,6 @@ function add_component_metaboxes() {
 
 add_action('save_post_components', 'save_flare_component_description');
 
-function save_flare_component_description() {
-
-    global $post;
-
-    if (!wp_verify_nonce($_POST['component_meta_noncename'], plugin_basename(__FILE__))) {
-
-        return $post->ID;
-    }
-
-
-
-    if (!current_user_can('edit_post', $post->ID))
-        return $post->ID;
-
-    $key = '_component_description';
-
-    $value = $_POST[$key];
-
-
-
-    if ($post->post_type == 'revision')
-        return; // Don't store custom data twice
-
-
-    if (get_post_meta($post->ID, $key, FALSE)) {
-
-        update_post_meta($post->ID, $key, $value);
-    } else {
-
-        add_post_meta($post->ID, $key, $value);
-    }
-
-    if (!$value)
-        delete_post_meta($post->ID, $key); // Delete if blank
-}
-
-function flare_component_description() {
-
-    global $post;
-
-    echo '<input type="hidden" name="component_meta_noncename" id="component_description_meta_noncename" value="' .
-    wp_create_nonce(plugin_basename(__FILE__)) . '" />';
-
-    $data = get_post_meta($post->ID, '_component_description', true);
-    echo '<input type="text" name="_component_description" value="' . $data . '" class="widefat" />';
-}
 
 function flare_component_script() {
 
