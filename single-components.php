@@ -78,22 +78,77 @@ while (have_posts()) : the_post();
 
                         foreach ($decoded_docs as $top_level => $top_level_data) {
                             
-                            echo "<h3>" .ucfirst($top_level)  ."</h3>";
                             
                             foreach($top_level_data as $top_level_data_single){
-                                echo '<div class="api-top-level">';
-                                //var_dump($top_level_data_single);
-                                echo '<h4>' . $top_level_data_single->name . '</h4>';
-                                echo '<div class="api-description">' . $top_level_data_single->description . '</div>';
                                 
-                                
-                                if($top_level_data_single->functions){
+                                if(property_exists ($top_level_data_single , 'functions' )){
                                     foreach($top_level_data_single->functions as $function){
-                                        echo '<h4>' . $function->name . '</h4>';
+                                        if ($function->name == 'constructor'){
+                                            $constructor = $function;
+                                        }
+                                    }
+                                }
+                                
+                                echo '<div class="api-top-level" id="' . $top_level_data_single->name . '">';
+                                //var_dump($top_level_data_single);
+                                $type_label = '';
+                                switch($top_level){
+                                    case 'classes' :
+                                        $type_label = "Class : ";
+                                        break;
+                                    default:
+                                }
+                                echo '<h4><span class="api-heading">' . $type_label  . $top_level_data_single->name . '</span></h4>';
+                                echo '<div class="api-description">' . $top_level_data_single->description . '</div>';
+                                if($constructor){
+                                    
+                                        echo '<strong>';
+                                        echo 'new ' . $top_level_data_single->name;
+                                        echo '()';
+                                        echo  '</strong>';
+                                       
+                                }
+                                
+                                
+                                
+                                if(property_exists ($top_level_data_single , 'properties' )){
+                                   echo '<hr>';
+                                   echo '<h5>Public Properties</h5>';
+                                   foreach($top_level_data_single->properties as $property){ 
+                                       echo '<div class="api-property">';
+                                       $type = '';
+                                       if (property_exists($property, 'type')){
+                                           $type = " : " . $property->type->names[0];
+                                       }else{
+                                           $type = " : object";
+                                       }
+                                       echo '<div class="api-property-name"><strong>'.$property->name .'</strong>' .$type . "</div>" ;
+                                       echo '<div class="api-description">' . $property->description . '</div>';
+                                       echo '</div>';
+                                   }
+                                }
+
+                                
+                                if(property_exists ($top_level_data_single , 'functions' ) && count($top_level_data_single->functions) > 1){
+                                    echo '<hr>';
+                                    echo '<h5>Functions</h5>';
+                                    foreach($top_level_data_single->functions as $function){
+                                        if($function->name != 'constructor'){
+                                            
+                                        echo '<div class="api-property" id="' .$top_level_data_single->name . "." . $function->name .  '">';
+                                        echo '<div class="api-property-name"><strong>';
+                                        echo $function->name;
+                                        echo '()';
+                                        echo '</div></strong>';
+                            
                                         echo '<div class="api-description">' . $function->description . '</div>';
+                                        echo '</div>';
+                                        }
                                  
                                     }
                                 }
+                                 
+                                 
                                 
                                 echo '</div>';
                             }

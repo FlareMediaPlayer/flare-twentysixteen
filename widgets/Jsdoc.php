@@ -41,7 +41,7 @@ class Jsdoc extends WP_Widget {
                 foreach ($top_level_data as $top_level_data_single) {
                     echo '<ul class="api-widget">';
 
-                    echo "<strong>Class : </strong>" . '<a>' . $top_level_data_single->name . '</a>';
+                    echo "<strong>Class : </strong>" . '<a href="#'.$top_level_data_single->name. '">' . $top_level_data_single->name . '</a>';
                    //echo '<li>'; // Start top level
 
                     if(property_exists ($top_level_data_single , 'properties' )){

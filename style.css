@@ -474,18 +474,30 @@ strong{
 **********************************/
 
 .api-top-level{
-    /*margin-top: 5px;
-    padding: 5px;
     background-color: rgba(0,0,0,0.04);
-    */
+    margin: 0 0 20px 0;
+    padding: 10px;
+    /*border : 1px solid #F27127;*/
+}
+
+.api-top-level hr{
+    border-top: 1px solid #ccc;
+}
+
+.api-heading{
+    border-bottom: 1px solid #D94929;
+}
+
+.api-top-level h4{
+    margin-top: 0;
 }
 
 .api-description{
     
 }
 
-.api-methods , .api-properties{
-    padding: 10px;
+.api-second-level{
+    margin-left: 10px;
 }
 
 .api-class-content{
@@ -507,4 +519,19 @@ strong{
 .api-widget li, .api-widget ul{
     padding: 1px 20px;
     border: none;
+}
+
+.api-property{
+    border:1px solid rgba(0,0,0,0.3);
+}
+.api-property strong{
+    color :#333;
+}
+.api-property .api-property-name{
+    background-color: rgba(0,0,0,0.3);
+}
+
+.api-property .api-property-name,.api-property .api-description {
+    padding:5px;
+    
 }
