@@ -47,7 +47,9 @@ function add_component_metaboxes() {
     add_meta_box('flare_component_description', 'Component Description', 'flare_component_description', 'components', 'normal', 'high');
     add_meta_box('flare_component_script', 'Component Script', 'flare_component_script', 'components', 'normal', 'high');
     add_meta_box('flare_component_details', 'Component Details', 'flare_component_details', 'components', 'normal', 'high');
-    add_meta_box('flare_component_jsdoc', 'JSDoc', 'flare_component_jsdoc', 'components', 'normal', 'high');
+    add_meta_box('flare_component_jsdoc', 'JSDoc', 'flare_component_jsdoc', 'components', 'side', 'default');
+
+    
 }
 
 add_action('save_post_components', 'save_flare_component_description');
@@ -265,77 +267,57 @@ add_action('init', 'custom_rewrite_flare_components');
  * JSDoc Functionality
  */
 function save_flare_component_jsdoc() {
-
-    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
-        return;
-    
     global $post;
-    
-    if ( !isset( $_POST['component_jsdoc_noncename'] ) )
-        return;
 
+
+    /* --- security verification --- */
     if (!wp_verify_nonce($_POST['component_jsdoc_noncename'], plugin_basename(__FILE__))) {
+        return;
+    } // end if
 
-        return $post->ID;
-    }
-
-
-
-    if (!current_user_can('edit_post', $post->ID))
-        return $post->ID;
-
-    $key = '_component_jsdoc';
-
-    $docs = $_POST['_component_jsdoc'];
-    
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    } // end if
 
 
-    update_post_meta($post->ID, '_component_jsdoc', $docs);
+    if (!current_user_can('edit_page', $post->ID)) {
+        return;
+    } // end if
+    //
+       
+       
+    // Make sure the file array isn't empty
+    if (!empty($_FILES['_component_jsdoc']['name'])) {
+
+        
+        // Get the file type of the upload
+        $arr_file_type = wp_check_filetype(basename($_FILES['_component_jsdoc']['name']));
+        //$uploaded_type = $arr_file_type['type'];
+
+
+
+        $upload = file_get_contents($_FILES['_component_jsdoc']['tmp_name']);
+
+        add_post_meta($post->ID, '_component_jsdoc', $upload);
+        update_post_meta($post->ID, '_component_jsdoc', $upload);
+    } // end if
+    //update_post_meta($post->ID, '_component_jsdoc', $docs);
 }
 
 function flare_component_jsdoc() {
 
     global $post;
+    $doc = get_post_meta($post->ID, '_component_jsdoc', true);
 
     echo '<input type="hidden" name="component_jsdoc_noncename" id="component_jsdoc_noncename" value="' .
     wp_create_nonce(plugin_basename(__FILE__)) . '" />';
-    ?>
-    <div id="jsdoc_inner">
-    <?php
-    //get the saved meta as an arry
-    $docs = get_post_meta($post->ID, '_component_jsdoc', true);
-    $c = 0;
 
-    if (is_array($docs)) {
-        foreach ($docs as $doc) {
-            if (isset($doc['version']) || isset($doc['doc'])) {
-                printf('<p>Version <input type="text" name="_component_jsdoc[%1$s][version]" value="%2$s" /> -- Docs : <input type="text" name="_component_jsdoc[%1$s][docs]" value="%3$s" /><span class="remove">%4$s</span></p>', $c, $doc['version'], $doc['docs'], __('Remove Doc'));
-                $c = $c + 1;
-            }
-        }
-    }
-    ?>
+    $html = '<p>';
+    $html .= '<strong>Upload Jsdoc JSON.</strong>';
+    $html .= '</p>';
+    $html .= '<input type="file" id="_component_jsdoc" name="_component_jsdoc" value="" size="25" />';
 
-        <span id="here"></span>
-        <span class="add"><?php _e('Add Docs'); ?></span>
-        <script>
-            var $ = jQuery.noConflict();
-            $(document).ready(function () {
-                var count = <?php echo $c; ?>;
-                $(".add").click(function () {
-                    count = count + 1;
-
-                    $('#here').append('<p> Version <input type="text" name="_component_jsdoc[' + count + '][version]" value="" /> -- Docs : <input type="text" name="_component_jsdoc[' + count + '][docs]" value="" /><span class="remove">Remove Doc</span></p>');
-                    return false;
-                });
-                $(".remove").live('click', function () {
-                    $(this).parent().remove();
-                });
-            });
-        </script>
-    </div>
-
-    <?php
+    echo $html;
 }
 
 add_action('save_post_components', 'save_flare_component_jsdoc');

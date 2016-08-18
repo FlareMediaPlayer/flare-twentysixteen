@@ -8,6 +8,8 @@ require_once ('widgets/github.php');
 require_once ('widgets/FlareComponents.php');
 require_once ('widgets/DownloadScript.php');
 require_once ('widgets/CompleteBuilds.php');
+require_once ('widgets/Jsdoc.php');
+//require_once ('plugins/APIDocs.php');
 require_once ('widgets/ComponentOverview.php');
 require_once ('widgets/Npm.php');
 require_once ('components.php');
@@ -27,6 +29,10 @@ if (!function_exists('flare-twentysixteen_setup')) :
 endif;
 add_action('after_setup_theme', 'flare_twentysixteen_setup');
 
+function update_edit_form() {
+    echo ' enctype="multipart/form-data"';
+} // end update_edit_form
+add_action('post_edit_form_tag', 'update_edit_form');
 
 function flare_twentysixteen_build_init() {
     
