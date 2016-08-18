@@ -453,10 +453,7 @@ strong{
     overflow: hidden;
 }
 
-.api-widget li{
-    padding: 1px 15px;
-    border: none;
-}
+
 
 /**********************************
 * contact form
@@ -476,11 +473,15 @@ strong{
 * API
 **********************************/
 
-.api-class{
+.api-top-level{
     /*margin-top: 5px;
     padding: 5px;
     background-color: rgba(0,0,0,0.04);
     */
+}
+
+.api-description{
+    
 }
 
 .api-methods , .api-properties{
@@ -493,4 +494,17 @@ strong{
 
 .api-method{
     margin: 5px 0;
+}
+
+.api-widget{
+    margin:10px 0;
+    background-color: rgba(0,0,0,0.02);
+    padding: 5px !important;
+}
+
+
+
+.api-widget li, .api-widget ul{
+    padding: 1px 20px;
+    border: none;
 }

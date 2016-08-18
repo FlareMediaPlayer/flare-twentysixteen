@@ -4,7 +4,7 @@
 $meta = get_post_meta(get_the_ID());
 $categories = get_terms('components-category');
 $tags = get_terms('components-tag');
-$docs = get_post_meta($post->ID, '_component_jsdoc', true); 
+$docs = get_post_meta($post->ID, '_component_jsdoc', true);
 ?>
 
 <?php
@@ -37,9 +37,9 @@ while (have_posts()) : the_post();
                 if (get_post_meta($post->ID, '_component_details_github', true))
                     flare_single_widget('Github');
                 ?>
-                
+
                 <?php
-                if (is_array($docs))
+                if ($docs)
                     flare_single_widget('Jsdoc');
                 ?>
 
@@ -67,22 +67,41 @@ while (have_posts()) : the_post();
                 <div class="main-content">
 
                     <?php the_content(); ?> 
-                    
+
                     <?php
                     $docs = get_post_meta($post->ID, '_component_jsdoc', true);
-                    if($docs){
+
+                    if ($docs) {
                         echo '<h2>API Documentation</h2>';
-                        $decoded_docs = json_decode($docs)->docs;
-                        //var_dump(count($decoded_docs));
-                        foreach($decoded_docs as $doc){
+                        $decoded_docs = json_decode($docs);
+                        //var_dump($decoded_docs);
+
+                        foreach ($decoded_docs as $top_level => $top_level_data) {
                             
-                            if(property_exists ($doc,'name')){
-                                var_dump($doc->name);
+                            echo "<h3>" .ucfirst($top_level)  ."</h3>";
+                            
+                            foreach($top_level_data as $top_level_data_single){
+                                echo '<div class="api-top-level">';
+                                //var_dump($top_level_data_single);
+                                echo '<h4>' . $top_level_data_single->name . '</h4>';
+                                echo '<div class="api-description">' . $top_level_data_single->description . '</div>';
+                                
+                                
+                                if($top_level_data_single->functions){
+                                    foreach($top_level_data_single->functions as $function){
+                                        echo '<h4>' . $function->name . '</h4>';
+                                        echo '<div class="api-description">' . $function->description . '</div>';
+                                 
+                                    }
+                                }
+                                
+                                echo '</div>';
                             }
+                       
                         }
                     }
                     ?>
-                    
+
 
                 </div>
             </div>
