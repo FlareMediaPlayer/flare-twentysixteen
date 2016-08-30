@@ -98,7 +98,7 @@ while (have_posts()) : the_post();
                                         break;
                                     default:
                                 }
-                                echo '<h4><span class="api-heading">' . $type_label  . $top_level_data_single->name . '</span></h4>';
+                                echo '<h4><span class="api-title">' . $type_label  . $top_level_data_single->name . '</span></h4>';
                                 echo '<div class="api-description">' . $top_level_data_single->description . '</div>';
                                 if($constructor){
                                     
@@ -138,8 +138,14 @@ while (have_posts()) : the_post();
                                         echo '<div class="api-property" id="' .$top_level_data_single->name . "." . $function->name .  '">';
                                         echo '<div class="api-property-name"><strong>';
                                         echo $function->name;
-                                        echo '()';
-                                        echo '</div></strong>';
+                                        echo '(</strong>';
+                                        if(property_exists ($function , 'parameters' )){
+                                            for($i = 0; $i < count($function->parameters) ; $i++ ){
+                                                echo ' '  . $function->parameters[$i]->name . ' ';
+                                            }
+                                        }
+                                        echo'<strong>)';
+                                        echo '</strong></div>';
                             
                                         echo '<div class="api-description">' . $function->description . '</div>';
                                         echo '</div>';
